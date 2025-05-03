@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youssef Azougagh - Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom Styles */
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Dark Mode Styles (These will now be always active due to the 'dark' class on <html>) */
+      .dark body {
+        background-color: #111827; /* Equivalent to Tailwind's gray-900 */
+        color: #f3f4f6; /* Equivalent to Tailwind's gray-100 */
+      }
+      .dark .bg-white {
+        background-color: #1f2937; /* gray-800 */
+      }
+      .dark .text-gray-900 {
+        color: #f9fafb; /* gray-50 */
+      }
+      .dark .text-gray-700 {
+        color: #d1d5db; /* gray-300 */
+      }
+      .dark .text-gray-600 {
+        color: #9ca3af; /* gray-400 */
+      }
+      .dark .text-gray-500 {
+        color: #6b7280; /* gray-500 */
+      }
+      .dark .border-gray-200 {
+        border-color: #374151; /* gray-700 */
+      }
+      .dark .hover\:bg-gray-100:hover {
+        background-color: #374151; /* gray-700 */
+      }
+      .dark .hover\:text-indigo-700:hover {
+        color: #818cf8; /* indigo-400 */
+      }
+      /* Ensure links within cards don't change color on hover in dark mode if the card itself is the link */
+      .dark .project-card-link:hover .text-indigo-600 {
+        color: #a5b4fc; /* indigo-300 or adjust as needed */
+      }
+      .dark .ring-gray-300 {
+        ring-color: #4b5563; /* gray-600 */
+      }
+      .dark .bg-gray-50 {
+        background-color: #1f2937; /* gray-800 */
+      }
+      .dark .bg-gray-100 {
+        background-color: #111827; /* gray-900 */
+      } /* Adjusted for section backgrounds */
+      .dark .shadow-lg {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+          0 4px 6px -4px rgba(0, 0, 0, 0.3);
+      }
+      .dark .shadow-md {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
+          0 2px 4px -2px rgba(0, 0, 0, 0.2);
+      } /* Adjusted shadow for dark mode */
+      .dark input[type='text'],
+      .dark input[type='email'],
+      .dark textarea {
+        background-color: #374151; /* gray-700 */
+        border-color: #4b5563; /* gray-600 */
+        color: #f3f4f6; /* gray-100 */
+      }
+      .dark input::placeholder,
+      .dark textarea::placeholder {
+        color: #9ca3af; /* gray-400 */
+      }
+      .dark .[&_svg]:hover {
+        color: #818cf8; /* indigo-400 */
+      }
+
+      /* Animation */
+      .section-hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .section-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Simple fade-in for hero */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in-down {
+        animation: fadeInDown 0.8s ease-out forwards;
+      }
+      /* Project card link styling */
+      .project-card-link {
+        display: block; /* Make the link a block element */
+        text-decoration: none; /* Remove underline */
+        color: inherit; /* Inherit text color */
+        transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for hover effect */
+      }
+      .project-card-link:hover {
+        transform: scale(1.03); /* Slightly scale up on hover */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1); /* Enhance shadow on hover */
+      }
+      .dark .project-card-link:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.3); /* Darker shadow for dark mode */
+      }
+    </style>
+    <script>
+      // Removed theme toggle logic
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900 transition-colors duration-300">
+    <header
+      class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#"
+          class="text-2xl font-bold text-indigo-600 dark:text-indigo-400"
+          >Youssef Azougagh</a
+        >
+        <div class="flex items-center space-x-4">
+          <ul class="hidden md:flex space-x-6">
+            <li>
+              <a
+                href="#about"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#skills"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >Skills</a
+              >
+            </li>
+            <li>
+              <a
+                href="#projects"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a
+                href="#education"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >Education</a
+              >
+            </li>
+            <li>
+              <a
+                href="#certifications"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >Certifications</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+      <section id="hero" class="text-center py-20 section-hidden">
+        <img
+          src="./images/youssef.png"
+          alt="Youssef Azougagh's profile picture"
+          class="w-32 h-32 rounded-full mx-auto mb-6 ring-4 ring-indigo-600 dark:ring-indigo-400"
+        />
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">
+          Hi, I'm Youssef Azougagh
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
+          Software Developer | Full-Stack Engineer
+        </p>
+        <div class="space-x-4">
+          <a
+            href="#contact"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
+            >Get In Touch</a
+          >
+          <a
+            href="Youssef_Azougagh_Resume.pdf"
+            download="Youssef_Azougagh_Resume.pdf"
+            class="bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 inline-flex items-center"
+          >
+            <i class="fas fa-download mr-2"></i> Download Resume
+          </a>
+        </div>
+      </section>
+
+      <section id="about" class="py-16 section-hidden">
+        <h2 class="text-3xl font-bold text-center mb-10">About Me</h2>
+        <div
+          class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg"
+        >
+          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            Computer Science alumnus (Southern Connecticut State University, Dec
+            2023) and experienced Software Developer with a strong background in
+            full-stack development. Skilled in delivering quality software
+            solutions from inception to deployment. I have built 6+ full-stack
+            applications incorporating secure authentication, databases, and
+            CI/CD deployment strategies.
+          </p>
+          <p
+            class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mt-4"
+          >
+            As a proactive freelancer since 2021, I've developed custom software
+            for various clients, including web applications, desktop apps, and
+            automation tools, demonstrating versatility and adaptability. I'm a
+            strong communicator and team player with proven leadership
+            abilities, having led Agile teams to deliver projects end-to-end. I
+            enjoy tackling challenging problems and building efficient,
+            scalable, and user-friendly applications using a wide range of
+            technologies.
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="skills"
+        class="py-16 bg-gray-100 dark:bg-gray-900 section-hidden"
+      >
+        <h2 class="text-3xl font-bold text-center mb-10">Core Skills</h2>
+
+        <div class="max-w-sm mx-auto mt-8">
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center"
+          >
+            <i class="fas fa-sitemap text-4xl text-purple-500 mb-2"></i>
+            <p class="font-semibold">Data Structures & Algorithms</p>
+            <div class="flex justify-center mt-3 gap-4">
+              <a
+                href="https://www.hackerrank.com/profile/youssef_azougag1"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="HackerRank Profile"
+              >
+                <i
+                  class="fab fa-hackerrank text-2xl text-green-600 hover:text-green-800 dark:hover:text-green-400"
+                ></i>
+              </a>
+              <a
+                href="https://leetcode.com/u/YoussefAzo96/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LeetCode Profile"
+              >
+                <i
+                  class="fas fa-cube text-2xl text-orange-500 hover:text-orange-700 dark:hover:text-orange-300"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center mt-8"
+        >
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-python text-4xl text-indigo-500 mb-2"></i>
+            <p class="font-semibold">Python</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-java text-4xl text-red-500 mb-2"></i>
+            <p class="font-semibold">Java</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-js-square text-4xl text-yellow-500 mb-2"></i>
+            <p class="font-semibold">JavaScript</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-php text-4xl text-purple-500 mb-2"></i>
+            <p class="font-semibold">PHP</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-hashtag text-4xl text-blue-400 mb-2"></i>
+            <p class="font-semibold">C#</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-node-js text-4xl text-green-500 mb-2"></i>
+            <p class="font-semibold">Node.js / Express</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-leaf text-4xl text-green-600 mb-2"></i>
+            <p class="font-semibold">Spring</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-python text-4xl text-gray-500 mb-2"></i>
+            <p class="font-semibold">Flask</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-code text-4xl text-purple-600 mb-2"></i>
+            <p class="font-semibold">.NET</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-react text-4xl text-cyan-500 mb-2"></i>
+            <p class="font-semibold">React.js</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-html5 text-4xl text-orange-500 mb-2"></i>
+            <p class="font-semibold">HTML5</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-css3-alt text-4xl text-blue-600 mb-2"></i>
+            <p class="font-semibold">CSS3</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-bootstrap text-4xl text-purple-700 mb-2"></i>
+            <p class="font-semibold">Bootstrap</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-js text-4xl text-yellow-400 mb-2"></i>
+            <p class="font-semibold">jQuery</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-database text-4xl text-blue-500 mb-2"></i>
+            <p class="font-semibold">SQL (MySQL)</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-database text-4xl text-green-700 mb-2"></i>
+            <p class="font-semibold">MongoDB</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-git-alt text-4xl text-red-600 mb-2"></i>
+            <p class="font-semibold">Git / GitHub</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fab fa-docker text-4xl text-blue-400 mb-2"></i>
+            <p class="font-semibold">Docker</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-cloud text-4xl text-sky-500 mb-2"></i>
+            <p class="font-semibold">Cloud (AWS, IBM)</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-users-gear text-4xl text-teal-500 mb-2"></i>
+            <p class="font-semibold">Agile / SDLC</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-brain text-4xl text-pink-500 mb-2"></i>
+            <p class="font-semibold">ML / Deep Learning</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-server text-4xl text-orange-400 mb-2"></i>
+            <p class="font-semibold">REST APIs</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-cubes text-4xl text-yellow-600 mb-2"></i>
+            <p class="font-semibold">Microservices</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-vial text-4xl text-lime-500 mb-2"></i>
+            <p class="font-semibold">Unit Testing</p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <i class="fas fa-ship text-4xl text-blue-700 mb-2"></i>
+            <p class="font-semibold">Kubernetes</p>
+          </div>
+        </div>
+
+        <p class="text-center text-gray-600 dark:text-gray-400 mt-8">
+          Also familiar with: C, Serverless, MVC, Linux, Kafka, NoSQL, Hadoop,
+          Ajax, PWA, and more.
+        </p>
+      </section>
+
+      <section id="projects" class="py-16 section-hidden">
+        <h2 class="text-3xl font-bold text-center mb-10">Selected Projects</h2>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto"
+        >
+          <a
+            href="https://github.com/YouAzo96/immerse"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-card-link group"
+          >
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full flex flex-col"
+            >
+              <img
+                src="./images/chat-app.png"
+                alt="Microservices Chat App Thumbnail"
+                class="w-full h-48 object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
+              />
+              <div class="p-6 flex flex-col flex-grow">
+                <h3
+                  class="text-xl font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+                >
+                  Real-time Microservices Chat App
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  Privacy-focused chat with real-time messaging (WebSocket) &
+                  video/audio calls (WebRTC). Features JWT auth & Firebase
+                  notifications. Containerized microservices (auth, gateway,
+                  chat) deployed on IBM Cloud via CI/CD.
+                </p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-auto">
+                  <strong>Tech:</strong> Node.js, Express, React, WebSocket,
+                  WebRTC, JWT, Docker, IndexedDB, Jest
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/YouAzo96/owl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-card-link group"
+          >
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full flex flex-col"
+            >
+              <img
+                src="./images/carpool-app.png"
+                alt="Carpooling Web App Thumbnail"
+                class="w-full h-48 object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
+              />
+              <div class="p-6 flex flex-col flex-grow">
+                <h3
+                  class="text-xl font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+                >
+                  Carpooling Web App
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  Led a 4-person Agile team to build a full-stack ridesharing
+                  platform for students/faculty. Features Flask REST API, MySQL
+                  backend (SQLAlchemy ORM), and dynamic frontend with real-time
+                  chat & ride-matching.
+                </p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-auto">
+                  <strong>Tech:</strong> Python, Flask, MySQL, SQLAlchemy, HTML,
+                  CSS, Bootstrap, jQuery, JavaScript, Agile
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-card-link group"
+          >
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full flex flex-col"
+            >
+              <img
+                src="./images/store-system.png"
+                alt="Store Management System Thumbnail"
+                class="w-full h-48 object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
+              />
+              <div class="p-6 flex flex-col flex-grow">
+                <h3
+                  class="text-xl font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+                >
+                  Store Management System (Desktop)
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  JavaFX desktop app for healthcare providers. Handles 10k+
+                  patient records with multithreading, RBAC, secure patient
+                  portal, and SQL injection safeguards. Reduced invoice time and
+                  saved significant manual work.
+                </p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-auto">
+                  <strong>Tech:</strong> Java, JavaFX, JDBC, MySQL, OOP
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/YouAzo96/ObjectDetectionAndClassification"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-card-link group"
+          >
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full flex flex-col"
+            >
+              <img
+                src="./images/ai-detection.png"
+                alt="AI Wildlife Detection Thumbnail"
+                class="w-full h-48 object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
+              />
+              <div class="p-6 flex flex-col flex-grow">
+                <h3
+                  class="text-xl font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+                >
+                  AI-Powered Wildlife Detection
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  Engineered an object detection pipeline (Detectron2, Mask
+                  R-CNN) achieving 77.7% AP for endangered species ID. Led
+                  dataset curation (1.5k+ images), preprocessing, model
+                  experimentation, and error analysis.
+                </p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-auto">
+                  <strong>Tech:</strong> Python, Detectron2, Mask R-CNN, CNNs,
+                  Data Augmentation
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="education" class="py-16 section-hidden">
+        <h2 class="text-3xl font-bold text-center mb-10">Education</h2>
+        <div
+          class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg space-y-8"
+        >
+          <div>
+            <div
+              class="flex flex-col sm:flex-row justify-between sm:items-center mb-1"
+            >
+              <h3
+                class="text-xl font-semibold text-indigo-700 dark:text-indigo-400"
+              >
+                Bachelor of Science in Computer Science
+              </h3>
+              <span
+                class="text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-0"
+                >2021 - Dec 2023</span
+              >
+            </div>
+            <p class="text-lg text-gray-700 dark:text-gray-300">
+              Southern Connecticut State University
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              Minor in Math | GPA: 3.2
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+              Relevant Coursework: Data Structures & Algorithms, Software
+              Design, Database Design, OS, Distributed Systems, AI, Deep
+              Learning.
+            </p>
+          </div>
+          <div>
+            <div
+              class="flex flex-col sm:flex-row justify-between sm:items-center mb-1"
+            >
+              <h3
+                class="text-xl font-semibold text-indigo-700 dark:text-indigo-400"
+              >
+                Associate Degree in Computer Science
+              </h3>
+              <span
+                class="text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-0"
+                >2017 - 2020</span
+              >
+            </div>
+            <p class="text-lg text-gray-700 dark:text-gray-300">
+              Norwalk Community College
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              GPA: 3.5
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+              Relevant Coursework: Object Oriented Programming, Data Structures,
+              Android Development, Java, Databases (ERD, Oracle DB).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="certifications"
+        class="py-16 bg-gray-100 dark:bg-gray-900 section-hidden"
+      >
+        <h2 class="text-3xl font-bold text-center mb-10">
+          Certifications & Training
+        </h2>
+        <div class="max-w-4xl mx-auto space-y-6">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between hover:shadow-lg transition-shadow duration-300"
+          >
+            <div>
+              <h3 class="text-lg font-semibold mb-1">
+                Networks and Systems Technician
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Provider: (Training in Morocco)
+              </p>
+              <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                Issued: 2017
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between hover:shadow-lg transition-shadow duration-300"
+          >
+            <div>
+              <h3 class="text-lg font-semibold mb-1">
+                Introduction to Cloud Computing (IBM)
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Provider: Coursera / LinkedIn Learning
+              </p>
+            </div>
+            <a
+              href="https://www.coursera.org/account/accomplishments/verify/HH2A9H8H9A8H"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-600 dark:text-indigo-400 hover:underline ml-0 sm:ml-4 mt-2 sm:mt-0 shrink-0"
+            >
+              View Credential
+              <i class="fas fa-external-link-alt text-xs ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between hover:shadow-lg transition-shadow duration-300"
+          >
+            <div>
+              <h3 class="text-lg font-semibold mb-1">
+                Creativity at Work (Seth Godin)
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Provider: LinkedIn Learning
+              </p>
+            </div>
+            <a
+              href="https://www.linkedin.com/learning/certificates/03e9a0bc4bf4852dcadfb84e7e502b9aa9a7423d4bbebfdeb0b3fcd1e0ff3512"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-600 dark:text-indigo-400 hover:underline ml-0 sm:ml-4 mt-2 sm:mt-0 shrink-0"
+            >
+              View Credential
+              <i class="fas fa-external-link-alt text-xs ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between hover:shadow-lg transition-shadow duration-300"
+          >
+            <div>
+              <h3 class="text-lg font-semibold mb-1">
+                Succeeding in Web Development: Full Stack and Front End
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Provider: LinkedIn Learning
+              </p>
+            </div>
+            <a
+              href="https://www.linkedin.com/learning/certificates/abc39698ab65d2e3fa1d4da0ab7ff8eacc347d0a53d94a919d821c6fe169c438"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-600 dark:text-indigo-400 hover:underline ml-0 sm:ml-4 mt-2 sm:mt-0 shrink-0"
+            >
+              View Credential
+              <i class="fas fa-external-link-alt text-xs ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between hover:shadow-lg transition-shadow duration-300"
+          >
+            <div>
+              <h3 class="text-lg font-semibold mb-1">
+                Agile Software Development
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Provider: LinkedIn Learning
+              </p>
+              <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                Issued: Mar 2020
+              </p>
+            </div>
+            <a
+              href="https://www.linkedin.com/learning/certificates/2bbd181de33752fb63e4efd46e4bf27564588dca2593947c6c9b4d4b9fa56678"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-600 dark:text-indigo-400 hover:underline ml-0 sm:ml-4 mt-2 sm:mt-0 shrink-0"
+            >
+              View Credential
+              <i class="fas fa-external-link-alt text-xs ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between hover:shadow-lg transition-shadow duration-300"
+          >
+            <div>
+              <h3 class="text-lg font-semibold mb-1">SQL Certification</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Provider: TestDome
+              </p>
+            </div>
+            <a
+              href="https://www.testdome.com/certificates/fe747b101c3c4d7d850461cae85ddb31"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-600 dark:text-indigo-400 hover:underline ml-0 sm:ml-4 mt-2 sm:mt-0 shrink-0"
+            >
+              View Credential
+              <i class="fas fa-external-link-alt text-xs ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        class="py-16 bg-gray-100 dark:bg-gray-900 section-hidden"
+      >
+        <h2 class="text-3xl font-bold text-center mb-10">Contact Me</h2>
+        <div
+          class="max-w-2xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg"
+        >
+          <p class="text-center text-gray-600 dark:text-gray-400 mb-6">
+            Interested in collaborating or have a question? Send me a message!
+            <br />
+            Or reach out directly at:
+            <a
+              href="mailto:youssef.azouqaqh96@gmail.com"
+              class="text-indigo-600 dark:text-indigo-400 hover:underline"
+              >youssef.azouqaqh96@gmail.com</a
+            >
+          </p>
+          <form
+            action="https://formspree.io/f/xqaqpwel"
+            method="POST"
+            class="space-y-6"
+          >
+            <div>
+              <label
+                for="name"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >Name</label
+              >
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-gray-700 dark:text-gray-100"
+              />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >Email</label
+              >
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-gray-700 dark:text-gray-100"
+              />
+            </div>
+            <div>
+              <label
+                for="message"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-gray-700 dark:text-gray-100"
+              ></textarea>
+            </div>
+            <div>
+              <button
+                type="submit"
+                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-300"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16"
+    >
+      <div
+        class="container mx-auto px-6 py-6 text-center text-gray-600 dark:text-gray-400"
+      >
+        <div class="flex justify-center space-x-6 mb-4">
+          <a
+            href="https://github.com/YouAzo96"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+          >
+            <i class="fab fa-github fa-lg"></i>
+          </a>
+          <a
+            href="https://linkedin.com/in/youazo96"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+          >
+            <i class="fab fa-linkedin fa-lg"></i>
+          </a>
+        </div>
+        <p>
+          &copy; <span id="current-year"></span> Youssef Azougagh. All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Set current year in footer
+      document.getElementById('current-year').textContent =
+        new Date().getFullYear();
+
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('section-visible');
+              entry.target.classList.remove('section-hidden');
+            }
+          });
+        },
+        {
+          threshold: 0.1, // Trigger when 10% of the element is visible
+        }
+      );
+
+      // Observe all sections with the 'section-hidden' class
+      document.querySelectorAll('.section-hidden').forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
