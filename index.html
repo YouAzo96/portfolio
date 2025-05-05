@@ -84,10 +84,9 @@
       .dark textarea::placeholder {
         color: #9ca3af; /* gray-400 */
       }
-      .dark .[&_svg]:hover {
+      .dark svg:hover {
         color: #818cf8; /* indigo-400 */
       }
-
       /* Animation */
       .section-hidden {
         opacity: 0;
@@ -127,9 +126,6 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.3); /* Darker shadow for dark mode */
       }
     </style>
-    <script>
-      // Removed theme toggle logic
-    </script>
   </head>
   <body class="bg-gray-50 text-gray-900 transition-colors duration-300">
     <header
@@ -455,7 +451,8 @@
             href="https://github.com/YouAzo96/immerse"
             target="_blank"
             rel="noopener noreferrer"
-            class="project-card-link group"
+            class="project-card-link group relative block"
+            id="chat-app-container"
           >
             <div
               class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full flex flex-col"
@@ -472,6 +469,7 @@
                 >
                   Real-time Microservices Chat App
                 </h3>
+
                 <p class="text-gray-600 dark:text-gray-400 mb-4">
                   Privacy-focused chat with real-time messaging (WebSocket) &
                   video/audio calls (WebRTC). Features JWT auth & Firebase
@@ -482,6 +480,218 @@
                   <strong>Tech:</strong> Node.js, Express, React, WebSocket,
                   WebRTC, JWT, Docker, IndexedDB, Jest
                 </p>
+              </div>
+            </div>
+            <div
+              id="chat-app-popup-overlay"
+              class="fixed top-0 left-0 w-full h-full bg-transparent pointer-events-none opacity-0 transition-opacity duration-300 backdrop-filter blur-0"
+            >
+              <div
+                id="chat-app-popup"
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 max-w-lg h-4/5 max-h-screen bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 overflow-auto flex flex-col"
+              >
+              <button
+              id="github-link-button"
+              class="absolute top-4 right-4 bg-transparent border-none cursor-pointer text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+              aria-label="View on GitHub" style="padding: 0.5rem; margin-right: 17px;"
+          >
+              <i class="fab fa-github text-xl"></i>
+          </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+                <div class="popup-description flex-grow" id="popup">
+                  <h3>Immerse - Real-time Microservices Chat App</h3>
+                  <p>
+                    <strong>Immerse</strong> is a microservices-based web
+                    application designed to provide a modular, secure platform
+                    for user interaction with real-time communication features.
+                    It employs a gateway architecture with token-based
+                    authentication and push notifications, and leverages both
+                    REST and socket communication. The project is containerized
+                    for ease of development and was intended for cloud
+                    deployment.
+                  </p>
+
+                  <h4>🚀 Features</h4>
+                  <ul>
+                    <li>API Gateway with JWT verification and routing</li>
+                    <li>Socket-based communication between services</li>
+                    <li>
+                      Authentication service for secure login and registration
+                    </li>
+                    <li>User profile service</li>
+                    <li>Push notifications via Firebase Cloud Messaging</li>
+                    <li>
+                      Planned WebRTC support for video/audio calls (not
+                      implemented)
+                    </li>
+                    <li>Dockerized development environment</li>
+                  </ul>
+
+                  <h4>🏗️ System Design</h4>
+                  <p>Immerse is composed of four backend microservices:</p>
+                  <ul>
+                    <li>
+                      <strong>Gateway Service</strong>: Handles all frontend
+                      requests, verifies JWT tokens, and routes them to the
+                      appropriate services.
+                    </li>
+                    <li>
+                      <strong>Authentication Service</strong>: Issues and
+                      verifies JWT tokens, handles user registration and login.
+                    </li>
+                    <li><strong>User Service</strong>: Manages user data.</li>
+                    <li>
+                      <strong>Notifications Service</strong>: Sends real-time
+                      notifications using Firebase Cloud Messaging (FCM), pushes
+                      notifications directly to the frontend.
+                    </li>
+                  </ul>
+
+                  <p>
+                    <strong>🔌 Inter-Service Communication:</strong> REST and
+                    WebSockets are used where applicable for synchronous and
+                    event-driven communication between services.
+                  </p>
+                  <p>
+                    <strong>🎥 WebRTC Support:</strong> WebRTC-based audio/video
+                    communication was planned, but not implemented due to the
+                    complexity of setting up a TURN server for NAT traversal.
+                  </p>
+
+                  <h4>🧰 Technology Stack</h4>
+                  <ul>
+                    <li><strong>Frontend</strong>: React.js</li>
+                    <li>
+                      <strong>Backend</strong>: Node.js, Express.js, Socket.io
+                    </li>
+                    <li>
+                      <strong>Authentication</strong>: JSON Web Tokens (JWT)
+                    </li>
+                    <li>
+                      <strong>Notifications</strong>: Firebase Cloud Messaging
+                      (FCM)
+                    </li>
+                    <li>
+                      <strong>Real-Time Comms</strong>: WebSockets (Socket.io),
+                      WebRTC (planned)
+                    </li>
+                    <li><strong>Containerization</strong>: Docker</li>
+                    <li>
+                      <strong>CI/CD (Planned)</strong>: GitHub Actions + IBM
+                      Cloud
+                    </li>
+                  </ul>
+
+                  <h4>⚖️ Tradeoffs Made</h4>
+                  <table>
+                    <tr>
+                      <th>Decision</th>
+                      <th>Tradeoff</th>
+                    </tr>
+                    <tr>
+                      <td>Shared database</td>
+                      <td>
+                        Simplifies data handling but reduces service
+                        independence
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>No TURN server</td>
+                      <td>
+                        Avoided cost/complexity but blocked WebRTC functionality
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>No centralized logs</td>
+                      <td>Limited observability and harder debugging</td>
+                    </tr>
+                    <tr>
+                      <td>No service discovery</td>
+                      <td>Services are hardcoded, less scalable</td>
+                    </tr>
+                    <tr>
+                      <td>Minimal gateway logic</td>
+                      <td>No rate limiting, caching, or circuit breaking</td>
+                    </tr>
+                  </table>
+
+                  <h4>❗ Shortcomings and Improvements</h4>
+                  <table>
+                    <tr>
+                      <th>Shortcoming</th>
+                      <th>Suggested Solution</th>
+                    </tr>
+                    <tr>
+                      <td>I used a single shared database</td>
+                      <td>
+                        I plan to move to per-service databases for full
+                        microservice isolation. This will improve scalability
+                        and allow each service to handle its own data more
+                        effectively.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I didn’t implement a TURN/STUN server for WebRTC</td>
+                      <td>
+                        I'll need to either integrate a public STUN server or
+                        set up a TURN server using Coturn. This will allow
+                        WebRTC functionality to work across different NAT
+                        configurations.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>There’s no centralized logging</td>
+                      <td>
+                        I'll add a logging service like Winston, Logstash, or
+                        integrate with the ELK stack for better observability
+                        across all services. This will make it easier to debug
+                        and monitor the system.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I didn’t include service discovery</td>
+                      <td>
+                        I plan to integrate a service discovery mechanism like
+                        Consul or move to Kubernetes, which would handle dynamic
+                        service registration and allow for easier scaling.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        The API Gateway doesn’t include resilience features like
+                        caching or rate limiting
+                      </td>
+                      <td>
+                        I’ll add features like caching, rate limiting, and
+                        circuit breaking to the gateway to enhance performance
+                        and reliability. I might use Nginx or Kong for these
+                        features.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Deployment is incomplete</td>
+                      <td>
+                        I need to finalize the CI/CD pipeline using GitHub
+                        Actions and deploy the app to IBM Cloud to get it into a
+                        production environment.
+                      </td>
+                    </tr>
+                  </table>
+                </div>
               </div>
             </div>
           </a>
@@ -891,7 +1101,185 @@
         </p>
       </div>
     </footer>
+    <style>
+      /* Style for the pop-up overlay (for the blur effect) */
+      #chat-app-popup-overlay {
+        backdrop-filter: blur(10px); /* Apply the blur effect */
+      }
 
+      #chat-app-popup-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+        backdrop-filter: blur(10px); /* Ensure blur is applied when open */
+      }
+
+      /* Style for the centered pop-up */
+      #chat-app-popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%; /* Adjust as needed */
+        max-width: 768px; /* Optional: set a maximum width */
+        height: 80%; /* Adjust as needed */
+        max-height: 80vh; /* Optional: set a maximum height */
+        background-color: #1f2937;
+        dark: bg-gray-700;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        padding: 1rem; /* Reduced padding for smaller screens */
+        overflow-y: auto;
+        flex-direction: column;
+        display: flex;
+        
+      }
+      #chat-app-popup {
+  overflow: auto; /* Or overflow: scroll; */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+#chat-app-popup::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+      /* Style for the close button */
+      #close-popup {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      /* Initially hide the overlay and pop-up */
+      #chat-app-popup-overlay {
+        opacity: 0;
+        pointer-events: none;
+        backdrop-filter: blur(0); /* Initially no blur */
+      }
+
+      /* Show the overlay and pop-up on hover */
+      #chat-app-container:hover #chat-app-popup-overlay {
+        opacity: 1;
+        pointer-events: auto;
+        backdrop-filter: blur(10px); /* Apply blur on hover */
+      }
+
+      #chat-app-container:hover #chat-app-popup {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Ensure the inner pop-up is visible when the overlay is visible */
+      #chat-app-popup-overlay.open #chat-app-popup {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      #popup {
+        z-index: 99;
+      }
+      /* Responsive adjustments for the popup content */
+      #popup {
+        width: 100%;
+        height: auto;
+        overflow-y: auto;
+      }
+
+      #popup h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      #popup h4 {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      #popup p {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+      }
+
+      #popup ul,
+      #popup ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      #popup li {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      #popup table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+      }
+
+      #popup th,
+      #popup td {
+        border: 1px solid #4b5563;
+        padding: 0.5rem;
+        text-align: left;
+      }
+
+      #popup th {
+        background-color: #374151;
+        color: #f3f4f6;
+      }
+
+      /* Adjustments for smaller screens */
+      @media (max-width: 640px) {
+        #chat-app-popup {
+          width: 90%;
+          height: 90%;
+          padding: 0.5rem;
+        }
+
+        #popup h3 {
+          font-size: 1.2rem;
+        }
+
+        #popup h4 {
+          font-size: 1.1rem;
+        }
+
+        #popup p,
+        #popup li {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const chatAppContainer = document.getElementById('chat-app-container');
+        const chatAppPopup = document.getElementById('chat-app-popup');
+        const closeButton = document.getElementById('close-popup');
+        const githubpopup = document.getElementById('github-popup');
+
+        chatAppContainer.addEventListener('mouseenter', () => {
+          chatAppPopup.classList.add('open');
+        });
+
+        chatAppContainer.addEventListener('mouseleave', () => {
+          chatAppPopup.classList.remove('open');
+        });
+
+        closeButton.addEventListener('click', () => {
+          chatAppPopup.classList.remove('open');
+        });
+        githubpopup.addEventListener('click', () => {
+          window.location.href = 'https://github.com/YouAzo96/immerse';
+        });
+      });
+    </script>
     <script>
       // Set current year in footer
       document.getElementById('current-year').textContent =
